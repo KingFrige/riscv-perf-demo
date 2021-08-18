@@ -1,20 +1,16 @@
-# Getting Started
+README
+============
 
-First install this repository into FireMarshal:
+build
+-----------
 
-    cd /PATH/TO/FIREMARSHAL/firemarshal/example-workloads
-    git submodule add https://github.com/ucb-bar/coremark-workload.git coremark
+```bash
+make
+```
 
-When you first install this repository, you should update all submodules:
+run
+----------
 
-    cd /PATH/TO/FIREMARSHAL/firemarshal/example-workloads
-    git submodule update --init --recursive coremark
-
-After that you can use FireMarshal as normal and point to the `json` workload configs:
-
-    # build
-    cd /PATH/TO/FIREMARSHAL/firemarshal/example-workloads
-    ./marshal build example-workloads/coremark/marshal-configs/coremark.json
-
-    # launch on QEMU
-    ./marshal launch example-workloads/coremark/marshal-configs/coremark.json
+```bash
+$CHIPYARD/sims/vcs/simv-chipyard-StcBoomConfig-debug perfMonCnt.riscv +permissive +fsdbfile=test.fsdb +max-cycles=10000000 +permissive-off
+```
