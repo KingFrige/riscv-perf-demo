@@ -5,6 +5,8 @@ build
 -----------
 
 ```bash
+module load chipyard
+
 make
 ```
 
