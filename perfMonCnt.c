@@ -12,11 +12,6 @@ int main()
   size_t brMispredRetired, machineClears, fetchLatencyCycles, opsExecutedCycles;
   size_t memStallsAnyLoad, memStallsStores;
 
-  instret = -read_csr(minstret);
-  cycles  = -read_csr(mcycle);
-  printf("C0: %d instructions\n", (int)(instret));
-  printf("C0: %d cycles\n", (int)(cycles));
-
   write_csr(mhpmcounter3, 0);
   write_csr(mhpmevent3, HPM_EVENTID_8|HPM_EVENTCLASS_0);
   write_csr(mhpmcounter4, 0);
@@ -36,6 +31,11 @@ int main()
   write_csr(mhpmevent10, HPM_EVENTID_13|HPM_EVENTCLASS_1);
   write_csr(mhpmcounter11, 0);
   write_csr(mhpmevent11, HPM_EVENTID_14|HPM_EVENTCLASS_1);
+
+  instret = -read_csr(minstret);
+  cycles  = -read_csr(mcycle);
+  printf("C0: %d instructions\n", (int)(instret));
+  printf("C0: %d cycles\n", (int)(cycles));
 
   printf("Hello Boom!\n");
   printf("Hello Boom!\n");
