@@ -34,8 +34,8 @@ int main()
 
   instret = -read_csr(minstret);
   cycles  = -read_csr(mcycle);
-  printf("C0: %d instructions\n", (int)(instret));
-  printf("C0: %d cycles\n", (int)(cycles));
+  printf("instructions:%d\n", (int)(instret));
+  printf("cycles:%d\n", (int)(cycles));
 
   printf("Hello Boom!\n");
   printf("Hello Boom!\n");
@@ -58,17 +58,17 @@ int main()
   memStallsAnyLoad = read_csr(mhpmcounter10);
   memStallsStores = read_csr(mhpmcounter11);
 
-  printf("C0: %d instructions\n", (int)(instret));
-  printf("C0: %d cycles\n", (int)(cycles));
+  printf("instructions:%d\n", (int)(instret));
+  printf("cycles:%d\n", (int)(cycles));
 
-  printf("C0: %d slotsIssed\n", (int)(slotsIssed));
-  printf("C0: %d fetchBubbles\n", (int)(fetchBubbles));
+  printf("slotsIssed:%d\n", (int)(slotsIssed));
+  printf("fetchBubbles:%d\n", (int)(fetchBubbles));
 
-  printf("C0: %d recoveryCycles\n", (int)(recoveryCycles));
-  printf("C0: %d brMispredRetired\n", (int)(brMispredRetired));
-  printf("C0: %d machineClears\n", (int)(machineClears));
-  printf("C0: %d fetchLatencyCycles\n", (int)(fetchLatencyCycles));
-  printf("C0: %d opsExecutedCycles\n", (int)(opsExecutedCycles));
-  printf("C0: %d memStallsAnyLoad\n", (int)(memStallsAnyLoad));
-  printf("C0: %d memStallsStores\n", (int)(memStallsStores));
+  printf("recoveryCycles:%d\n", (int)(recoveryCycles));
+  printf("brMispredRetired:%d\n", (int)(brMispredRetired));
+  printf("machineClears:%d\n", (int)(machineClears));
+  printf("fetchLatencyCycles:%d\n", (int)(fetchLatencyCycles));
+  printf("opsExecutedCycles:%d\n", (int)(opsExecutedCycles));
+  printf("memStallsAnyLoad:%d\n", (int)(memStallsAnyLoad));
+  printf("memStallsStores:%d\n", (int)(memStallsStores));
 }
