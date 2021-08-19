@@ -1,4 +1,5 @@
 *.riscv
+*.riscv.dump
 *.o
 hello
 tags
