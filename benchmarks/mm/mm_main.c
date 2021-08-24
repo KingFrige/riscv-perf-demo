@@ -8,12 +8,18 @@
 
 #pragma GCC optimize ("unroll-loops")
 
+extern int topDownCntSet();
+extern int topDownCntGet();
+
+
 void thread_entry(int cid, int nc)
 {
   const int R = 8;
   int m, n, p;
   uint64_t s = 0xdeadbeefU;
   
+  topDownCntSet();
+
   m = CBM;
   n = CBN;
   p = CBK;
@@ -68,5 +74,8 @@ void thread_entry(int cid, int nc)
 #endif
 
   barrier(nc);
+
+  topDownCntGet();
+
   exit(0);
 }
