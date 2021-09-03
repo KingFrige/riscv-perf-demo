@@ -96,17 +96,17 @@ int topDownCntGet(){
   slotsIssed = read_csr(mhpmcounter3);
   fetchBubbles = read_csr(mhpmcounter4);
 
-  recoveryCycles = read_csr(mhpmcounter5);
-  fetchNoDeliveredCycles = read_csr(mhpmcounter6);
-  brMispredRetired = read_csr(mhpmcounter7);
-  machineClears = read_csr(mhpmcounter8);
-  opsExecutedCycles = read_csr(mhpmcounter9);
-  memStallsAnyLoad = read_csr(mhpmcounter10);
-  memStallsStores = read_csr(mhpmcounter11);
+  branchRetired = read_csr(mhpmcounter5);
+  fpRetired = read_csr(mhpmcounter6);
+  vectorRetired = read_csr(mhpmcounter7);
 
-  branchRetired = read_csr(mhpmcounter12);
-  fpRetired = read_csr(mhpmcounter13);
-  vectorRetired = read_csr(mhpmcounter14);
+  recoveryCycles = read_csr(mhpmcounter8);
+  fetchNoDeliveredCycles = read_csr(mhpmcounter9);
+  brMispredRetired = read_csr(mhpmcounter10);
+  machineClears = read_csr(mhpmcounter11);
+  opsExecutedCycles = read_csr(mhpmcounter12);
+  memStallsAnyLoad = read_csr(mhpmcounter13);
+  memStallsStores = read_csr(mhpmcounter14);
 
   iTLBMiss = read_csr(mhpmcounter15);
   iCacheMiss = read_csr(mhpmcounter16);
