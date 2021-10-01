@@ -9,95 +9,88 @@
 #include "util.h"
 #include "hpm.h"
 
+#define SET_PERFCNT(mhpmcnt, eventid, enventclass) \
+  write_csr(mhpmcounter ## mhpmcnt, 0); \
+  write_csr(mhpmevent ## mhpmcnt, HPM_EVENTID_ ## eventid|HPM_EVENTCLASS_ ## enventclass);
+
+#define SHOW_PERFCNT(fmt, mhpmcnt) \
+  printf(fmt, (int)(read_csr(mhpmcounter ## mhpmcnt)));
+
 int insnInfoCntSet(){
   write_csr(minstret, 0);
   write_csr(mcycle, 0);
 
-  write_csr(mhpmcounter3, 0);
-  write_csr(mhpmevent3, HPM_EVENTID_8|HPM_EVENTCLASS_2);
-  write_csr(mhpmcounter4, 0);
-  write_csr(mhpmevent4, HPM_EVENTID_9|HPM_EVENTCLASS_2);
-  write_csr(mhpmcounter5, 0);
-  write_csr(mhpmevent5, HPM_EVENTID_10|HPM_EVENTCLASS_2);
-  write_csr(mhpmcounter6, 0);
-  write_csr(mhpmevent6, HPM_EVENTID_11|HPM_EVENTCLASS_2);
-  write_csr(mhpmcounter7, 0);
-  write_csr(mhpmevent7, HPM_EVENTID_12|HPM_EVENTCLASS_2);
-  write_csr(mhpmcounter8, 0);
-  write_csr(mhpmevent8, HPM_EVENTID_13|HPM_EVENTCLASS_2);
-  write_csr(mhpmcounter9, 0);
-  write_csr(mhpmevent9, HPM_EVENTID_14|HPM_EVENTCLASS_2);
-  write_csr(mhpmcounter10, 0);
-  write_csr(mhpmevent10, HPM_EVENTID_15|HPM_EVENTCLASS_2);
-  write_csr(mhpmcounter11, 0);
-  write_csr(mhpmevent11, HPM_EVENTID_16|HPM_EVENTCLASS_2);
-  write_csr(mhpmcounter12, 0);
-  write_csr(mhpmevent12, HPM_EVENTID_17|HPM_EVENTCLASS_2);
-  write_csr(mhpmcounter13, 0);
-  write_csr(mhpmevent13, HPM_EVENTID_18|HPM_EVENTCLASS_2);
-  write_csr(mhpmcounter14, 0);
-  write_csr(mhpmevent14, HPM_EVENTID_19|HPM_EVENTCLASS_2);
-  write_csr(mhpmcounter15, 0);
-  write_csr(mhpmevent15, HPM_EVENTID_20|HPM_EVENTCLASS_2);
-  write_csr(mhpmcounter16, 0);
-  write_csr(mhpmevent16, HPM_EVENTID_21|HPM_EVENTCLASS_2);
-  write_csr(mhpmcounter17, 0);
-  write_csr(mhpmevent17, HPM_EVENTID_22|HPM_EVENTCLASS_2);
-  write_csr(mhpmcounter18, 0);
-  write_csr(mhpmevent18, HPM_EVENTID_23|HPM_EVENTCLASS_2);
-  write_csr(mhpmcounter19, 0);
-  write_csr(mhpmevent19, HPM_EVENTID_24|HPM_EVENTCLASS_2);
+  SET_PERFCNT( 3,  8, 3); // int load
+  SET_PERFCNT( 4,  9, 3); // int store
+  SET_PERFCNT( 5, 10, 3); // int amo
+  SET_PERFCNT( 6, 11, 3); // int system
+  SET_PERFCNT( 7, 12, 3); // int arith
+  SET_PERFCNT( 8, 13, 3); // int branch
+  SET_PERFCNT( 9, 14, 3); // int jal
+  SET_PERFCNT(10, 15, 3); // int jalr
+  SET_PERFCNT(11, 16, 3); // int mul
+  SET_PERFCNT(12, 17, 3); // int div
+  SET_PERFCNT(13, 18, 3); // int br taken
+  SET_PERFCNT(14, 19, 3); // int br not taken
+  SET_PERFCNT(15, 20, 3); // fp
+  SET_PERFCNT(16, 21, 3); // fp load
+  SET_PERFCNT(17, 22, 3); // fp store
+  SET_PERFCNT(18, 23, 3); // fp add
+  SET_PERFCNT(19, 24, 3); // fp mul
+  SET_PERFCNT(20, 25, 3); // fp mul-add
+  SET_PERFCNT(21, 26, 3); // fp div
+  SET_PERFCNT(22, 27, 3); // fp other
+
+  SET_PERFCNT(23,  8, 4); // exception
+  SET_PERFCNT(24,  9, 4); // br target misp
+  SET_PERFCNT(25, 10, 4); // br dir misp
+  SET_PERFCNT(26, 11, 4); // taken conditional misp
+  SET_PERFCNT(27, 12, 4); // not taken conditional misp
+  SET_PERFCNT(28, 13, 4); // f1 clear
+  SET_PERFCNT(29, 14, 4); // f2 clear
+  SET_PERFCNT(30, 17, 4); // flush
 
   return 0;
 }
 
 int insnInfoCntGet(){
   size_t instret, cycles;
-  size_t int_load, int_store, int_amo, int_system, int_arith, int_br, int_jal, int_jalr;
-  size_t int_mul, int_div;
-  size_t fp_load, fp_store, fp_add, fp_mul, fp_madd, fp_div, fp_other;
 
   instret = read_csr(minstret);
   cycles = read_csr(mcycle);
 
-  int_load   = read_csr(mhpmcounter3);
-  int_store  = read_csr(mhpmcounter4);
-  int_amo    = read_csr(mhpmcounter5);
-  int_system = read_csr(mhpmcounter6);
-  int_arith  = read_csr(mhpmcounter7);
-  int_br     = read_csr(mhpmcounter8);
-  int_jal    = read_csr(mhpmcounter9);
-  int_jalr   = read_csr(mhpmcounter10);
-  int_mul    = read_csr(mhpmcounter11);
-  int_div    = read_csr(mhpmcounter12);
-  fp_load    = read_csr(mhpmcounter13);
-  fp_store   = read_csr(mhpmcounter14);
-  fp_add     = read_csr(mhpmcounter15);
-  fp_mul     = read_csr(mhpmcounter16);
-  fp_madd    = read_csr(mhpmcounter17);
-  fp_div     = read_csr(mhpmcounter18);
-  fp_other   = read_csr(mhpmcounter19);
-
   printf("minstret:%d\n", (int)(instret));
   printf("mcycle:%d\n", (int)(cycles));
 
-  printf("int_load:%d\n",  (int)(int_load));
-  printf("int_store:%d\n", (int)(int_store));
-  printf("int_amo:%d\n",   (int)(int_amo));
-  printf("int_system:%d\n", (int)(int_system));
-  printf("int_arith:%d\n", (int)(int_arith));
-  printf("int_br:%d\n", (int)(int_br));
-  printf("int_jal:%d\n", (int)(int_jal));
-  printf("int_jalr:%d\n", (int)(int_jalr));
-  printf("int_mul:%d\n", (int)(int_mul));
-  printf("int_div:%d\n", (int)(int_div));
-  printf("fp_load:%d\n", (int)(fp_load));
-  printf("fp_store:%d\n", (int)(fp_store));
-  printf("fp_add:%d\n", (int)(fp_add));
-  printf("fp_mul:%d\n", (int)(fp_mul));
-  printf("fp_madd:%d\n", (int)(fp_madd));
-  printf("fp_div:%d\n", (int)(fp_div));
-  printf("fp_other:%d\n", (int)(fp_other));
+  SHOW_PERFCNT("int_load:%d\n", 3)
+  SHOW_PERFCNT("int_store:%d\n", 4)
+  SHOW_PERFCNT("int_amo:%d\n", 5)
+  SHOW_PERFCNT("int_system:%d\n", 6)
+  SHOW_PERFCNT("int_arith:%d\n", 7)
+  SHOW_PERFCNT("int_br:%d\n", 8)
+  SHOW_PERFCNT("int_jal:%d\n", 9)
+  SHOW_PERFCNT("int_jalr:%d\n", 10)
+  SHOW_PERFCNT("int_mul:%d\n", 11)
+  SHOW_PERFCNT("int_div:%d\n", 12)
+  SHOW_PERFCNT("br_taken:%d\n", 13)
+  SHOW_PERFCNT("br_ntaken:%d\n", 14)
+  SHOW_PERFCNT("fp_load:%d\n", 15);
+  SHOW_PERFCNT("fp_load:%d\n", 16);
+  SHOW_PERFCNT("fp_store:%d\n", 17);
+  SHOW_PERFCNT("fp_add:%d\n", 18);
+  SHOW_PERFCNT("fp_mul:%d\n", 19);
+  SHOW_PERFCNT("fp_madd:%d\n", 20);
+  SHOW_PERFCNT("fp_div:%d\n", 21);
+  SHOW_PERFCNT("fp_other:%d\n", 22);
+
+  SHOW_PERFCNT("exception:%d\n", 23);
+  SHOW_PERFCNT("br_misp_target:%d\n", 24);
+  SHOW_PERFCNT("br_misp_dir:%d\n", 25);
+  SHOW_PERFCNT("taken_cond_misp:%d\n", 26);
+  SHOW_PERFCNT("ntaken_cond_misp:%d\n", 27);
+  SHOW_PERFCNT("f1_clear:%d\n", 28);
+  SHOW_PERFCNT("f2_clear:%d\n", 29);
+  SHOW_PERFCNT("flush:%d\n", 30);
 
   return 0;
 }

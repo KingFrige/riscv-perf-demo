@@ -24,35 +24,35 @@ int topDownCntSet(){
   write_csr(mhpmevent6, HPM_EVENTID_11|HPM_EVENTCLASS_0);
   write_csr(mhpmcounter7, 0);
   write_csr(mhpmevent7, HPM_EVENTID_12|HPM_EVENTCLASS_0);
-
-
   write_csr(mhpmcounter8, 0);
-  write_csr(mhpmevent8, HPM_EVENTID_8|HPM_EVENTCLASS_1);
+  write_csr(mhpmevent8, HPM_EVENTID_13|HPM_EVENTCLASS_0);
   write_csr(mhpmcounter9, 0);
-  write_csr(mhpmevent9, HPM_EVENTID_9|HPM_EVENTCLASS_1);
+  write_csr(mhpmevent9, HPM_EVENTID_14|HPM_EVENTCLASS_0);
+
 
   write_csr(mhpmcounter10, 0);
-  write_csr(mhpmevent10, HPM_EVENTID_10|HPM_EVENTCLASS_1);
+  write_csr(mhpmevent10, HPM_EVENTID_8|HPM_EVENTCLASS_1);
   write_csr(mhpmcounter11, 0);
-  write_csr(mhpmevent11, HPM_EVENTID_11|HPM_EVENTCLASS_1);
+  write_csr(mhpmevent11, HPM_EVENTID_9|HPM_EVENTCLASS_1);
+
   write_csr(mhpmcounter12, 0);
-  write_csr(mhpmevent12, HPM_EVENTID_12|HPM_EVENTCLASS_1);
+  write_csr(mhpmevent12, HPM_EVENTID_10|HPM_EVENTCLASS_1);
   write_csr(mhpmcounter13, 0);
-  write_csr(mhpmevent13, HPM_EVENTID_13|HPM_EVENTCLASS_1);
+  write_csr(mhpmevent13, HPM_EVENTID_11|HPM_EVENTCLASS_1);
   write_csr(mhpmcounter14, 0);
-  write_csr(mhpmevent14, HPM_EVENTID_14|HPM_EVENTCLASS_1);
-
+  write_csr(mhpmevent14, HPM_EVENTID_12|HPM_EVENTCLASS_1);
   write_csr(mhpmcounter15, 0);
-  write_csr(mhpmevent15, HPM_EVENTID_15|HPM_EVENTCLASS_1);
+  write_csr(mhpmevent15, HPM_EVENTID_13|HPM_EVENTCLASS_1);
   write_csr(mhpmcounter16, 0);
-  write_csr(mhpmevent16, HPM_EVENTID_16|HPM_EVENTCLASS_1);
-  write_csr(mhpmcounter17, 0);
-  write_csr(mhpmevent17, HPM_EVENTID_17|HPM_EVENTCLASS_1);
+  write_csr(mhpmevent16, HPM_EVENTID_14|HPM_EVENTCLASS_1);
 
+  write_csr(mhpmcounter17, 0);
+  write_csr(mhpmevent17, HPM_EVENTID_15|HPM_EVENTCLASS_1);
   write_csr(mhpmcounter18, 0);
-  write_csr(mhpmevent18, HPM_EVENTID_18|HPM_EVENTCLASS_1);
+  write_csr(mhpmevent18, HPM_EVENTID_16|HPM_EVENTCLASS_1);
   write_csr(mhpmcounter19, 0);
-  write_csr(mhpmevent19, HPM_EVENTID_19|HPM_EVENTCLASS_1);
+  write_csr(mhpmevent19, HPM_EVENTID_17|HPM_EVENTCLASS_1);
+
   write_csr(mhpmcounter20, 0);
   write_csr(mhpmevent20, HPM_EVENTID_20|HPM_EVENTCLASS_1);
   write_csr(mhpmcounter21, 0);
@@ -98,22 +98,22 @@ int topDownCntGet(){
 
   branchRetired = read_csr(mhpmcounter5);
   fpRetired = read_csr(mhpmcounter6);
-  vectorRetired = read_csr(mhpmcounter7);
+  renameExecutionStall = read_csr(mhpmcounter7);
+  issueExecutionStall = read_csr(mhpmcounter8);
+  vectorRetired = read_csr(mhpmcounter9);
 
-  recoveryCycles = read_csr(mhpmcounter8);
-  fetchNoDeliveredCycles = read_csr(mhpmcounter9);
-  brMispredRetired = read_csr(mhpmcounter10);
-  machineClears = read_csr(mhpmcounter11);
-  opsExecutedCycles = read_csr(mhpmcounter12);
-  memStallsAnyLoad = read_csr(mhpmcounter13);
-  memStallsStores = read_csr(mhpmcounter14);
+  recoveryCycles = read_csr(mhpmcounter10);
+  fetchNoDeliveredCycles = read_csr(mhpmcounter11);
+  brMispredRetired = read_csr(mhpmcounter12);
+  machineClears = read_csr(mhpmcounter13);
+  opsExecutedCycles = read_csr(mhpmcounter14);
+  memStallsAnyLoad = read_csr(mhpmcounter15);
+  memStallsStores = read_csr(mhpmcounter16);
 
-  iTLBMiss = read_csr(mhpmcounter15);
-  iCacheMiss = read_csr(mhpmcounter16);
-  branchResteers = read_csr(mhpmcounter17);
+  iTLBMiss = read_csr(mhpmcounter17);
+  iCacheMiss = read_csr(mhpmcounter18);
+  branchResteers = read_csr(mhpmcounter19);
 
-  renameExecutionStall = read_csr(mhpmcounter18);
-  issueExecutionStall = read_csr(mhpmcounter19);
   robExecutionStall = read_csr(mhpmcounter20);
   exeport0Utilization = read_csr(mhpmcounter21);
   exeport1Utilization = read_csr(mhpmcounter22);
