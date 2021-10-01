@@ -1,6 +1,13 @@
 #ifndef _HPM_H
 #define _HPM_H
 
+#define SET_PERFCNT(mhpmcnt, eventid, enventclass) \
+  write_csr(mhpmcounter ## mhpmcnt, 0); \
+  write_csr(mhpmevent ## mhpmcnt, HPM_EVENTID_ ## eventid|HPM_EVENTCLASS_ ## enventclass);
+
+#define SHOW_PERFCNT(fmt, mhpmcnt) \
+  printf(fmt, (int)(read_csr(mhpmcounter ## mhpmcnt)));
+
 /*! @brief Macros for valid Event IDs */
 #define HPM_EVENTID_8 (1UL << 8)
 #define HPM_EVENTID_9 (1UL << 9)

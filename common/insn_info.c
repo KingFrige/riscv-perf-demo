@@ -9,46 +9,40 @@
 #include "util.h"
 #include "hpm.h"
 
-#define SET_PERFCNT(mhpmcnt, eventid, enventclass) \
-  write_csr(mhpmcounter ## mhpmcnt, 0); \
-  write_csr(mhpmevent ## mhpmcnt, HPM_EVENTID_ ## eventid|HPM_EVENTCLASS_ ## enventclass);
-
-#define SHOW_PERFCNT(fmt, mhpmcnt) \
-  printf(fmt, (int)(read_csr(mhpmcounter ## mhpmcnt)));
-
 int insnInfoCntSet(){
   write_csr(minstret, 0);
   write_csr(mcycle, 0);
 
-  SET_PERFCNT( 3,  8, 3); // int load
-  SET_PERFCNT( 4,  9, 3); // int store
-  SET_PERFCNT( 5, 10, 3); // int amo
-  SET_PERFCNT( 6, 11, 3); // int system
-  SET_PERFCNT( 7, 12, 3); // int arith
-  SET_PERFCNT( 8, 13, 3); // int branch
-  SET_PERFCNT( 9, 14, 3); // int jal
-  SET_PERFCNT(10, 15, 3); // int jalr
-  SET_PERFCNT(11, 16, 3); // int mul
-  SET_PERFCNT(12, 17, 3); // int div
-  SET_PERFCNT(13, 18, 3); // int br taken
-  SET_PERFCNT(14, 19, 3); // int br not taken
-  SET_PERFCNT(15, 20, 3); // fp
-  SET_PERFCNT(16, 21, 3); // fp load
-  SET_PERFCNT(17, 22, 3); // fp store
-  SET_PERFCNT(18, 23, 3); // fp add
-  SET_PERFCNT(19, 24, 3); // fp mul
-  SET_PERFCNT(20, 25, 3); // fp mul-add
-  SET_PERFCNT(21, 26, 3); // fp div
-  SET_PERFCNT(22, 27, 3); // fp other
+  SET_PERFCNT( 3,  8, 4); // int load
+  SET_PERFCNT( 4,  9, 4); // int store
+  SET_PERFCNT( 5, 10, 4); // int amo
+  SET_PERFCNT( 6, 11, 4); // int system
+  SET_PERFCNT( 7, 12, 4); // int arith
+  SET_PERFCNT( 8, 13, 4); // int branch
+  SET_PERFCNT( 9, 14, 4); // int jal
+  SET_PERFCNT(10, 15, 4); // int jalr
+  SET_PERFCNT(11, 16, 4); // int mul
+  SET_PERFCNT(12, 17, 4); // int div
+  SET_PERFCNT(13, 18, 4); // fp
+  SET_PERFCNT(14, 19, 4); // fp load
+  SET_PERFCNT(15, 20, 4); // fp store
+  SET_PERFCNT(16, 21, 4); // fp add
+  SET_PERFCNT(17, 22, 4); // fp mul
+  SET_PERFCNT(18, 23, 4); // fp mul-add
+  SET_PERFCNT(19, 24, 4); // fp div
+  SET_PERFCNT(20, 25, 4); // fp other
 
-  SET_PERFCNT(23,  8, 4); // exception
-  SET_PERFCNT(24,  9, 4); // br target misp
-  SET_PERFCNT(25, 10, 4); // br dir misp
-  SET_PERFCNT(26, 11, 4); // taken conditional misp
-  SET_PERFCNT(27, 12, 4); // not taken conditional misp
-  SET_PERFCNT(28, 13, 4); // f1 clear
-  SET_PERFCNT(29, 14, 4); // f2 clear
-  SET_PERFCNT(30, 17, 4); // flush
+  SET_PERFCNT(21,  8, 5); // int br taken
+  SET_PERFCNT(22,  9, 5); // int br not taken
+
+  SET_PERFCNT(23,  8, 6); // exception
+  SET_PERFCNT(24,  9, 6); // br target misp
+  SET_PERFCNT(25, 10, 6); // br dir misp
+  SET_PERFCNT(26, 11, 6); // taken conditional misp
+  SET_PERFCNT(27, 12, 6); // not taken conditional misp
+  SET_PERFCNT(28, 13, 6); // f1 clear
+  SET_PERFCNT(29, 14, 6); // f2 clear
+  SET_PERFCNT(30, 17, 6); // flush
 
   return 0;
 }
@@ -72,16 +66,17 @@ int insnInfoCntGet(){
   SHOW_PERFCNT("int_jalr:%d\n", 10)
   SHOW_PERFCNT("int_mul:%d\n", 11)
   SHOW_PERFCNT("int_div:%d\n", 12)
-  SHOW_PERFCNT("br_taken:%d\n", 13)
-  SHOW_PERFCNT("br_ntaken:%d\n", 14)
-  SHOW_PERFCNT("fp_load:%d\n", 15);
-  SHOW_PERFCNT("fp_load:%d\n", 16);
-  SHOW_PERFCNT("fp_store:%d\n", 17);
-  SHOW_PERFCNT("fp_add:%d\n", 18);
-  SHOW_PERFCNT("fp_mul:%d\n", 19);
-  SHOW_PERFCNT("fp_madd:%d\n", 20);
-  SHOW_PERFCNT("fp_div:%d\n", 21);
-  SHOW_PERFCNT("fp_other:%d\n", 22);
+  SHOW_PERFCNT("fp_load:%d\n", 13);
+  SHOW_PERFCNT("fp_load:%d\n", 14);
+  SHOW_PERFCNT("fp_store:%d\n", 15);
+  SHOW_PERFCNT("fp_add:%d\n", 16);
+  SHOW_PERFCNT("fp_mul:%d\n", 17);
+  SHOW_PERFCNT("fp_madd:%d\n", 18);
+  SHOW_PERFCNT("fp_div:%d\n", 19);
+  SHOW_PERFCNT("fp_other:%d\n", 20);
+
+  SHOW_PERFCNT("br_taken:%d\n", 21)
+  SHOW_PERFCNT("br_ntaken:%d\n", 22)
 
   SHOW_PERFCNT("exception:%d\n", 23);
   SHOW_PERFCNT("br_misp_target:%d\n", 24);
