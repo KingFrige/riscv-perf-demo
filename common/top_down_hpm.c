@@ -10,6 +10,9 @@
 #include "hpm.h"
 
 int topDownCntSet(){
+  write_csr(scounteren, -1);
+  write_csr(mcounteren, -1);
+
   write_csr(minstret, 0);
   write_csr(mcycle, 0);
 
