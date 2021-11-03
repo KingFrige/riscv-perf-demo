@@ -55,8 +55,8 @@ int topDownCntGet(){
   instret = read_csr(minstret);
   cycles = read_csr(mcycle);
 
-  printf("minstret:%d\n", (int)(instret));
-  printf("mcycle:%d\n", (int)(cycles));
+  printf("instret:%d\n", (int)(instret));
+  printf("cycles:%d\n", (int)(cycles));
 
   SHOW_PERFCNT("slotsIssed:%d\n", 3);
   SHOW_PERFCNT("fetchBubbles:%d\n", 4);
