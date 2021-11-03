@@ -47,6 +47,8 @@ int topDownCntSet(){
   SET_PERFCNT(28, 19, 1);
 
   SET_PERFCNT(29, 18, 4); // fp
+  SET_PERFCNT(30, 16, 7);
+  SET_PERFCNT(31, 13, 7);
 
   return 0;
 }
@@ -91,6 +93,9 @@ int topDownCntGet(){
   SHOW_PERFCNT("memLatency:%d\n", 28);
 
   SHOW_PERFCNT("fpRetired:%d\n", 29);
+  SHOW_PERFCNT("iTLBMiss:%d\n", 30);
+  SHOW_PERFCNT("iCacheMiss:%d\n", 31);
+  printf("branchResteers:%d\n", 0);
 
   return 0;
 }
