@@ -49,8 +49,6 @@ int insnInfoCntSet(){
   SET_PERFCNT(30, 23, 1); // not taken conditional misp
   SET_PERFCNT(31, 11, 1); // flush
 
-
-
   return 0;
 }
 
@@ -60,8 +58,8 @@ int insnInfoCntGet(){
   instret = read_csr(minstret);
   cycles = read_csr(mcycle);
 
-  printf("minstret:%d\n", (int)(instret));
-  printf("mcycle:%d\n", (int)(cycles));
+  printf("instret:%d\n", (int)(instret));
+  printf("cycles:%d\n", (int)(cycles));
 
   SHOW_PERFCNT("int_load:%d\n", 3)
   SHOW_PERFCNT("int_store:%d\n", 4)

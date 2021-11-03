@@ -46,6 +46,8 @@ int topDownCntSet(){
   SET_PERFCNT(27, 18, 1);
   SET_PERFCNT(28, 19, 1);
 
+  SET_PERFCNT(29, 18, 4); // fp
+
   return 0;
 }
 
@@ -87,6 +89,8 @@ int topDownCntGet(){
   SHOW_PERFCNT("memStallsL2Miss:%d\n", 26);
   SHOW_PERFCNT("memStallsL3Miss:%d\n", 27);
   SHOW_PERFCNT("memLatency:%d\n", 28);
+
+  SHOW_PERFCNT("fpRetired:%d\n", 29);
 
   return 0;
 }
