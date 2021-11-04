@@ -1,5 +1,5 @@
 
-default:build-perf
+all:build-perf build-insnInfo
 
 hello:
 	riscv64-unknown-elf-gcc -o hello hello.c
@@ -9,12 +9,12 @@ build-hello:
 	riscv64-unknown-elf-gcc -O2 -mcmodel=medany -static -std=gnu99 -fno-common -nostdlib -nostartfiles -lm -lgcc -T common/link.lds -I./common -DFLAGS_STR=\""-O2 -mcmodel=medany -static -std=gnu99 -fno-common -nostdlib -nostartfiles -lm -lgcc -T common/link.lds   "\" -DITERATIONS=0  hello.c common/syscalls.c common/top_down_hpm.c common/crt.S -o hello.riscv
 
 build-perf:
-	riscv64-unknown-elf-gcc -O2 -mcmodel=medany -static -std=gnu99 -fno-common -nostdlib -nostartfiles -lm -lgcc -T common/link.lds -I./common -DFLAGS_STR=\""-O2 -mcmodel=medany -static -std=gnu99 -fno-common -nostdlib -nostartfiles -lm -lgcc -T common/link.lds   "\" -DITERATIONS=0 perfMonCnt.c common/syscalls.c common/top_down_hpm.c common/crt.S -o perfMonCnt.riscv
-	riscv64-unknown-elf-objdump -d perfMonCnt.riscv > perfMonCnt.asm
+	riscv64-unknown-elf-gcc -O2 -mcmodel=medany -static -std=gnu99 -fno-common -nostdlib -nostartfiles -lm -lgcc -T common/link.lds -I./common -DFLAGS_STR=\""-O2 -mcmodel=medany -static -std=gnu99 -fno-common -nostdlib -nostartfiles -lm -lgcc -T common/link.lds   "\" -DITERATIONS=0 perfMonCnt.c common/syscalls.c common/top_down_hpm.c common/crt.S -o perfMonCnt_tma.riscv
+	riscv64-unknown-elf-objdump -d perfMonCnt_tma.riscv > perfMonCnt_tma.asm
 
 build-insnInfo:
-	riscv64-unknown-elf-gcc -O2 -mcmodel=medany -static -std=gnu99 -fno-common -nostdlib -nostartfiles -lm -lgcc -T common/link.lds -I./common -DFLAGS_STR=\""-O2 -mcmodel=medany -static -std=gnu99 -fno-common -nostdlib -nostartfiles -lm -lgcc -T common/link.lds   "\" -DITERATIONS=0 insnInfoCnt.c common/syscalls.c common/insn_info_hpm.c common/crt.S -o insnInfoCnt.riscv
-	riscv64-unknown-elf-objdump -d insnInfoCnt.riscv > insnInfoCnt.asm
+	riscv64-unknown-elf-gcc -O2 -mcmodel=medany -static -std=gnu99 -fno-common -nostdlib -nostartfiles -lm -lgcc -T common/link.lds -I./common -DFLAGS_STR=\""-O2 -mcmodel=medany -static -std=gnu99 -fno-common -nostdlib -nostartfiles -lm -lgcc -T common/link.lds   "\" -DITERATIONS=0 insnInfoCnt.c common/syscalls.c common/insn_info_hpm.c common/crt.S -o insnInfoCnt_info.riscv
+	riscv64-unknown-elf-objdump -d insnInfoCnt_info.riscv > insnInfoCnt_info.asm
 
 clean:
-	rm  -rf hello  *.riscv  *.o
+	rm  -rf hello  *.riscv  *.o *.asm
