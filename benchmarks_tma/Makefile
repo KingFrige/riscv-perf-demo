@@ -47,7 +47,7 @@ incs  += -I$(src_dir)/../common $(addprefix -I$(src_dir)/, $(bmarks))
 objs  :=
 
 define compile_template
-$(1).riscv: $(wildcard $(src_dir)/$(1)/*) $(wildcard $(src_dir)/../common/*)
+$(1)_tma.riscv: $(wildcard $(src_dir)/$(1)/*) $(wildcard $(src_dir)/../common/*)
 	$$(RISCV_GCC) $$(incs) $$(RISCV_GCC_OPTS) -o $$@ $(wildcard $(src_dir)/$(1)/*.c) $(wildcard $(src_dir)/../common/*.c) $(wildcard $(src_dir)/../common/*.S) $$(RISCV_LINK_OPTS)
 endef
 
@@ -56,14 +56,14 @@ $(foreach bmark,$(bmarks),$(eval $(call compile_template,$(bmark))))
 #------------------------------------------------------------
 # Build and run benchmarks on riscv simulator
 
-bmarks_riscv_bin  = $(addsuffix .riscv,  $(bmarks))
-bmarks_riscv_dump = $(addsuffix .riscv.dump, $(bmarks))
-bmarks_riscv_out  = $(addsuffix .riscv.out,  $(bmarks))
+bmarks_riscv_bin  = $(addsuffix _tma.riscv,  $(bmarks))
+bmarks_riscv_dump = $(addsuffix _tma.riscv.dump, $(bmarks))
+bmarks_riscv_out  = $(addsuffix _tma.riscv.out,  $(bmarks))
 
-$(bmarks_riscv_dump): %.riscv.dump: %.riscv
+$(bmarks_riscv_dump): %_tma.riscv.dump: %_tma.riscv
 	$(RISCV_OBJDUMP) $< > $@
 
-$(bmarks_riscv_out): %.riscv.out: %.riscv
+$(bmarks_riscv_out): %_tma.riscv.out: %_tma.riscv
 	$(RISCV_SIM) $< > $@
 
 riscv: $(bmarks_riscv_dump)
