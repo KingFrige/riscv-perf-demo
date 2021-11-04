@@ -70,8 +70,8 @@ int topDownCntGet(){
   SHOW_PERFCNT("fetchNoDeliveredCycles:%d\n", 7);
   SHOW_PERFCNT("brMispredRetired:%d\n", 8);
   SHOW_PERFCNT("machineClears:%d\n", 9);
-  SHOW_PERFCNT("noneOpsExecutedCycles:%d\n", 10);
-  SHOW_PERFCNT("opsExecutedCycles:%d\n", 11);
+  SHOW_PERFCNT("noOpsExecutedCycles:%d\n", 10);
+  SHOW_PERFCNT("fewOpsExecutedCycles:%d\n", 11);
   SHOW_PERFCNT("memStallsAnyLoad:%d\n", 12);
   SHOW_PERFCNT("memStallsStores:%d\n", 13);
 
