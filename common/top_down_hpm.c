@@ -36,10 +36,10 @@ int topDownCntSet(){
   SET_PERFCNT(18, 14, 2);
   SET_PERFCNT(19, 15, 2);
   SET_PERFCNT(20, 16, 2); //
-  SET_PERFCNT(21, 18, 2);
+  SET_PERFCNT(21, 17, 2);
   SET_PERFCNT(22, 22, 2); //
   SET_PERFCNT(23, 23, 2);
-  SET_PERFCNT(24, 28, 2); //
+  SET_PERFCNT(24, 24, 2); //
 
   SET_PERFCNT(25, 14, 1);
   SET_PERFCNT(26, 15, 1);
@@ -82,7 +82,7 @@ int topDownCntGet(){
   SHOW_PERFCNT("exeport3Utilization:%d\n", 18);
   SHOW_PERFCNT("exeport4Utilization:%d\n", 19);
   SHOW_PERFCNT("uopsExecutedGe1:%d\n",  20);
-  SHOW_PERFCNT("uopsExecutedGe3:%d\n",  21);
+  SHOW_PERFCNT("uopsExecutedGe2:%d\n",  21);
   SHOW_PERFCNT("noOpsExecutedCycles:%d\n", 22);
   SHOW_PERFCNT("fewOpsExecutedCycles:%d\n", 23);
   SHOW_PERFCNT("arithDivider_active:%d\n", 24);
