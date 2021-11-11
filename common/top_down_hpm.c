@@ -98,7 +98,6 @@ int topDownCntGet(){
 
   printf("fpRetired:%d\n", 0);
   printf("iTLBMiss:%d\n", 0);
-  printf(":%d\n", 0);
   printf("memLatency:%d\n", 0);
 
   return 0;
