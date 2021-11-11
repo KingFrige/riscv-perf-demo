@@ -43,11 +43,11 @@ int insnInfoCntSet(){
   SET_PERFCNT(25, 11, 0); // br retired and taken
   SET_PERFCNT(26, 12, 0); // br retired and not taken
 
-  SET_PERFCNT(27, 20, 1); // br target misp
-  SET_PERFCNT(28, 21, 1); // br dir misp
-  SET_PERFCNT(29, 22, 1); // taken conditional misp
-  SET_PERFCNT(30, 23, 1); // not taken conditional misp
-  SET_PERFCNT(31, 11, 1); // flush
+  SET_PERFCNT(27, 19, 1); // br target misp
+  SET_PERFCNT(28, 20, 1); // br dir misp
+  SET_PERFCNT(29, 21, 1); // taken conditional misp
+  SET_PERFCNT(30, 22, 1); // not taken conditional misp
+  SET_PERFCNT(31, 12, 1); // flush
 
   return 0;
 }
