@@ -67,7 +67,7 @@ int topDownCntGet(){
   SHOW_PERFCNT("fetchBubbles:%d\n", 4);
   SHOW_PERFCNT("branchRetired:%d\n", 5);
 
-  SHOW_PERFCNT("branchResteers:%d\n", 6);
+  SHOW_PERFCNT("badResteers:%d\n", 6);
   SHOW_PERFCNT("recoveryCycles:%d\n", 7);
   SHOW_PERFCNT("fetchNoDeliveredCycles:%d\n", 8);
   SHOW_PERFCNT("brMispredRetired:%d\n", 9);
