@@ -27,27 +27,26 @@ int topDownCntSet(){
   SET_PERFCNT(10, 12, 1);
   SET_PERFCNT(11, 13, 1);
   SET_PERFCNT(12, 14, 1);
+  SET_PERFCNT(13, 15, 1);
+  SET_PERFCNT(14, 16, 1);
 
-  SET_PERFCNT(13,  8, 2); //
-  SET_PERFCNT(14,  9, 2);
-  SET_PERFCNT(15, 10, 2);
-  SET_PERFCNT(16, 11, 2); //
-  SET_PERFCNT(17, 12, 2);
-  SET_PERFCNT(18, 13, 2); //
-  SET_PERFCNT(19, 14, 2);
-  SET_PERFCNT(20, 15, 2);
-  SET_PERFCNT(21, 16, 2);
-  SET_PERFCNT(22, 17, 2);
-  SET_PERFCNT(23, 18, 2); //
-  SET_PERFCNT(24, 19, 2);
-  SET_PERFCNT(25, 24, 2); //
-  SET_PERFCNT(26, 25, 2); 
-  SET_PERFCNT(27, 26, 2); //
+  SET_PERFCNT(15,  8, 2); //
+  SET_PERFCNT(16,  9, 2);
+  SET_PERFCNT(17, 10, 2);
+  SET_PERFCNT(18, 11, 2); //
+  SET_PERFCNT(19, 12, 2);
+  SET_PERFCNT(20, 13, 2); //
+  SET_PERFCNT(21, 14, 2);
+  SET_PERFCNT(22, 15, 2);
+  SET_PERFCNT(23, 16, 2);
+  SET_PERFCNT(24, 17, 2);
+  SET_PERFCNT(25, 18, 2); //
+  SET_PERFCNT(26, 19, 2);
+  SET_PERFCNT(27, 24, 2); //
+  SET_PERFCNT(28, 25, 2);
+  SET_PERFCNT(29, 26, 2); //
 
-  SET_PERFCNT(28, 15, 1);
-
-  SET_PERFCNT(29, 13, 0);
-  SET_PERFCNT(30, 15, 0);
+  SET_PERFCNT(30, 17, 1);
 
   SET_PERFCNT(31, 13, 8);
 
@@ -69,33 +68,31 @@ int topDownCntGet(){
 
   SHOW_PERFCNT("badResteers:%d\n", 6);
   SHOW_PERFCNT("recoveryCycles:%d\n", 7);
-  SHOW_PERFCNT("fetchNoDeliveredCycles:%d\n", 8);
+  SHOW_PERFCNT("unknowBanchCycles:%d\n", 8);
   SHOW_PERFCNT("brMispredRetired:%d\n", 9);
   SHOW_PERFCNT("machineClears:%d\n", 10);
-  SHOW_PERFCNT("memStallsAnyLoad:%d\n", 11);
-  SHOW_PERFCNT("memStallsStores:%d\n", 12);
+  SHOW_PERFCNT("iCacheStallCycles:%d\n", 11);
+  SHOW_PERFCNT("iTLBStallCycles:%d\n", 12);
+  SHOW_PERFCNT("memStallsAnyLoad:%d\n", 13);
+  SHOW_PERFCNT("memStallsStores:%d\n", 14);
 
-  SHOW_PERFCNT("uopsDeliveredLe0:%d\n", 13);
-  SHOW_PERFCNT("uopsDeliveredLe1:%d\n", 14);
-  SHOW_PERFCNT("uopsDeliveredLe2:%d\n", 15);
-  SHOW_PERFCNT("noOpsIssuedCycles:%d\n", 16);
-  SHOW_PERFCNT("fewOpsIssuedCycles:%d\n", 17);
-  SHOW_PERFCNT("exeport0Utilization:%d\n", 18);
-  SHOW_PERFCNT("exeport1Utilization:%d\n", 19);
-  SHOW_PERFCNT("exeport2Utilization:%d\n", 20);
-  SHOW_PERFCNT("exeport3Utilization:%d\n", 21);
-  SHOW_PERFCNT("exeport4Utilization:%d\n", 22);
-  SHOW_PERFCNT("uopsExecutedGe1:%d\n",  23);
-  SHOW_PERFCNT("uopsExecutedGe2:%d\n",  24);
-  SHOW_PERFCNT("noOpsExecutedCycles:%d\n", 25);
-  SHOW_PERFCNT("fewOpsExecutedCycles:%d\n", 26);
-  SHOW_PERFCNT("arithDivider_active:%d\n", 27);
+  SHOW_PERFCNT("uopsDeliveredLe0:%d\n", 15);
+  SHOW_PERFCNT("uopsDeliveredLe1:%d\n", 16);
+  SHOW_PERFCNT("uopsDeliveredLe2:%d\n", 17);
+  SHOW_PERFCNT("noOpsIssuedCycles:%d\n", 18);
+  SHOW_PERFCNT("fewOpsIssuedCycles:%d\n", 19);
+  SHOW_PERFCNT("exeport0Utilization:%d\n", 20);
+  SHOW_PERFCNT("exeport1Utilization:%d\n", 21);
+  SHOW_PERFCNT("exeport2Utilization:%d\n", 22);
+  SHOW_PERFCNT("exeport3Utilization:%d\n", 23);
+  SHOW_PERFCNT("exeport4Utilization:%d\n", 24);
+  SHOW_PERFCNT("uopsExecutedGe1:%d\n",  25);
+  SHOW_PERFCNT("uopsExecutedGe2:%d\n",  26);
+  SHOW_PERFCNT("noOpsExecutedCycles:%d\n", 27);
+  SHOW_PERFCNT("fewOpsExecutedCycles:%d\n", 28);
+  SHOW_PERFCNT("arithDivider_active:%d\n", 29);
 
-  SHOW_PERFCNT("memStallsL1Miss:%d\n", 28);
-
-  SHOW_PERFCNT("dispatchBubbles:%d\n", 29);
-  SHOW_PERFCNT("slotsDispatched:%d\n", 30);
-
+  SHOW_PERFCNT("memStallsL1Miss:%d\n", 30);
   SHOW_PERFCNT("iCacheMiss:%d\n", 31);
 
   printf("fpRetired:%d\n", 0);
