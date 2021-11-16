@@ -39,7 +39,7 @@ int topDownCntSet(){
   SET_PERFCNT(21, 25, 2);
   SET_PERFCNT(22, 26, 2); //
 
-
+  SET_PERFCNT(29, 21, 1);
   SET_PERFCNT(30, 17, 1);
   SET_PERFCNT(31, 18, 5);
 
@@ -78,11 +78,10 @@ int topDownCntGet(){
   SHOW_PERFCNT("fewOpsExecutedCycles:%d\n", 21);
   SHOW_PERFCNT("arithDivider_active:%d\n", 22);
 
+  SHOW_PERFCNT("robStallCycles:%d\n", 29);
   SHOW_PERFCNT("memStallsL1Miss:%d\n", 30);
   SHOW_PERFCNT("fpRetired:%d\n", 31);
 
-  printf("iCacheMiss:%d\n", 0);
-  printf("iTLBMiss:%d\n", 0);
   printf("memLatency:%d\n", 0);
   printf("memStallsL2Miss:%d\n", 0);
   printf("memStallsL3Miss:%d\n", 0);
