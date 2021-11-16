@@ -39,7 +39,7 @@ int topDownCntSet(){
   SET_PERFCNT(21, 25, 2);
   SET_PERFCNT(22, 26, 2); //
 
-  SET_PERFCNT(29, 21, 1);
+  SET_PERFCNT(29, 23, 1);
   SET_PERFCNT(30, 17, 1);
   SET_PERFCNT(31, 18, 5);
 
