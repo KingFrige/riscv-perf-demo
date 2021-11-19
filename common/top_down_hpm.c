@@ -47,44 +47,44 @@ int topDownCntSet(){
 }
 
 int topDownCntGet(){
-  size_t instret, cycles;
+  long instret, cycles;
 
   instret = read_csr(minstret);
   cycles = read_csr(mcycle);
 
-  printf("instret:%d\n", (int)(instret));
-  printf("cycles:%d\n", (int)(cycles));
+  printf("instret:%ld\n", (long)(instret));
+  printf("cycles:%ld\n",  (long)(cycles));
 
-  SHOW_PERFCNT("slotsIssed:%d\n", 3);
-  SHOW_PERFCNT("fetchBubbles:%d\n", 4);
-  SHOW_PERFCNT("branchRetired:%d\n", 5);
+  SHOW_PERFCNT("slotsIssed:%ld\n", 3);
+  SHOW_PERFCNT("fetchBubbles:%ld\n", 4);
+  SHOW_PERFCNT("branchRetired:%ld\n", 5);
 
-  SHOW_PERFCNT("badResteers:%d\n", 6);
-  SHOW_PERFCNT("recoveryCycles:%d\n", 7);
-  SHOW_PERFCNT("unknowBanchCycles:%d\n", 8);
-  SHOW_PERFCNT("brMispredRetired:%d\n", 9);
-  SHOW_PERFCNT("machineClears:%d\n", 10);
-  SHOW_PERFCNT("iCacheStallCycles:%d\n", 11);
-  SHOW_PERFCNT("iTLBStallCycles:%d\n", 12);
-  SHOW_PERFCNT("memStallsAnyLoad:%d\n", 13);
-  SHOW_PERFCNT("memStallsStores:%d\n", 14);
+  SHOW_PERFCNT("badResteers:%ld\n", 6);
+  SHOW_PERFCNT("recoveryCycles:%ld\n", 7);
+  SHOW_PERFCNT("unknowBanchCycles:%ld\n", 8);
+  SHOW_PERFCNT("brMispredRetired:%ld\n", 9);
+  SHOW_PERFCNT("machineClears:%ld\n", 10);
+  SHOW_PERFCNT("iCacheStallCycles:%ld\n", 11);
+  SHOW_PERFCNT("iTLBStallCycles:%ld\n", 12);
+  SHOW_PERFCNT("memStallsAnyLoad:%ld\n", 13);
+  SHOW_PERFCNT("memStallsStores:%ld\n", 14);
 
-  SHOW_PERFCNT("exeport0Utilization:%d\n", 15);
-  SHOW_PERFCNT("exeport1Utilization:%d\n", 16);
-  SHOW_PERFCNT("exeport2Utilization:%d\n", 17);
-  SHOW_PERFCNT("exeport3Utilization:%d\n", 18);
-  SHOW_PERFCNT("exeport4Utilization:%d\n", 19);
-  SHOW_PERFCNT("noOpsExecutedCycles:%d\n", 20);
-  SHOW_PERFCNT("fewOpsExecutedCycles:%d\n", 21);
-  SHOW_PERFCNT("arithDivider_active:%d\n", 22);
+  SHOW_PERFCNT("exeport0Utilization:%ld\n", 15);
+  SHOW_PERFCNT("exeport1Utilization:%ld\n", 16);
+  SHOW_PERFCNT("exeport2Utilization:%ld\n", 17);
+  SHOW_PERFCNT("exeport3Utilization:%ld\n", 18);
+  SHOW_PERFCNT("exeport4Utilization:%ld\n", 19);
+  SHOW_PERFCNT("noOpsExecutedCycles:%ld\n", 20);
+  SHOW_PERFCNT("fewOpsExecutedCycles:%ld\n", 21);
+  SHOW_PERFCNT("arithDivider_active:%ld\n", 22);
 
-  SHOW_PERFCNT("robStallCycles:%d\n", 29);
-  SHOW_PERFCNT("memStallsL1Miss:%d\n", 30);
-  SHOW_PERFCNT("fpRetired:%d\n", 31);
+  SHOW_PERFCNT("robStallCycles:%ld\n", 29);
+  SHOW_PERFCNT("memStallsL1Miss:%ld\n", 30);
+  SHOW_PERFCNT("fpRetired:%ld\n", 31);
 
-  printf("memLatency:%d\n", 0);
-  printf("memStallsL2Miss:%d\n", 0);
-  printf("memStallsL3Miss:%d\n", 0);
+  printf("memLatency:%ld\n", 0);
+  printf("memStallsL2Miss:%ld\n", 0);
+  printf("memStallsL3Miss:%ld\n", 0);
 
   return 0;
 }

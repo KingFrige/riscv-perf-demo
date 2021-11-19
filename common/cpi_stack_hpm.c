@@ -10,15 +10,15 @@
 #include "hpm.h"
 
 int cpiStackCntGet(){
-  size_t instret, cycles;
+  long instret, cycles;
 
   instret = read_csr(minstret);
   cycles = read_csr(mcycle);
 
-  printf("instructions:%d\n", (int)(instret));
-  printf("cpu_cycle:%d\n", (int)(cycles));
+  printf("instructions:%ld\n", (long)(instret));
+  printf("cpu_cycle:%ld\n",    (long)(cycles));
 
-  SHOW_PERFCNT("cache_references:%d\n", 3);
+  SHOW_PERFCNT("cache_references:%ld\n", 3);
 
   return 0;
 }
