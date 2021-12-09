@@ -1,5 +1,5 @@
 
-all:build-perf build-insnInfo build-tma build-info
+all:build-perf build-insnInfo build-init build-tma build-info
 
 hello:
 	riscv64-unknown-elf-gcc -o hello hello.c
@@ -16,6 +16,9 @@ build-insnInfo:
 	riscv64-unknown-elf-gcc -O2 -mcmodel=medany -static -std=gnu99 -fno-common -nostdlib -nostartfiles -lm -lgcc -T common/link.lds -I./common -DFLAGS_STR=\""-O2 -mcmodel=medany -static -std=gnu99 -fno-common -nostdlib -nostartfiles -lm -lgcc -T common/link.lds   "\" -DITERATIONS=0 insnInfoCnt.c common/syscalls.c common/insn_info_hpm.c common/crt.S -o insnInfoCnt_info.riscv
 	riscv64-unknown-elf-objdump -d insnInfoCnt_info.riscv > insnInfoCnt_info.asm
 
+build-init:
+	make -C benchmarks
+
 build-tma:
 	make -C benchmarks_tma
 
@@ -24,5 +27,6 @@ build-info:
 
 clean:
 	rm  -rf hello  *.riscv  *.o *.asm
+	make -C benchmarks clean
 	make -C benchmarks_tma clean
 	make -C benchmarks_info clean
